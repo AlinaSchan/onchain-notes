@@ -46,7 +46,7 @@ def main() -> int:
         try:
             hist = rpc(url, "eth_feeHistory", ["0x14", "latest", [50]])  # 20 blocks, median tip
             break
-        except Exception as exc:  # noqa: BLE001
+        except Exception as exc:
             last_err = exc
     if hist is None:
         print(f"no rpc answered: {last_err}", file=sys.stderr)
