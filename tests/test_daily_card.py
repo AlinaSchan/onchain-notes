@@ -22,7 +22,8 @@ def test_pct_handles_none():
 
 def test_l2_fees_and_sol_tip_parse_and_skip_dead_chains(monkeypatch):
     answers = {"https://a": {"result": {"baseFeePerGas": ["0x1", "0x3b9aca00"]}},
-               "https://s": {"result": [{"slot": 1, "prioritizationFee": 5000}, {"slot": 2, "prioritizationFee": 100}, {"slot": 3, "prioritizationFee": 900}]}}
+               "https://s": {"result": [{"slot": 1, "prioritizationFee": 5000}, {"slot": 2, "prioritizationFee": 100},
+                                       {"slot": 3, "prioritizationFee": 900}]}}
 
     def fake_get(url, **kw):
         if url in answers:
