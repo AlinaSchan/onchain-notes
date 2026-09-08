@@ -57,6 +57,37 @@ def fear_greed() -> dict:
     }
 
 
+L2_RPCS = {"base": ("https://mainnet.base.org", "https://base-rpc.publicnode.com"),
+           "arbitrum": ("https://arb1.arbitrum.io/rpc", "https://arbitrum-one-rpc.publicnode.com")}
+SOL_RPCS = ("https://api.mainnet-beta.solana.com", "https://solana-rpc.publicnode.com")
+
+
+def l2_fees(rpcs: dict = L2_RPCS) -> dict:
+    """next-block base fee on the l2s, in gwei; a chain that does not answer is simply absent."""
+    out = {}
+    for chain, urls in rpcs.items():
+        for url in urls:
+            try:
+                d = get(url, data={"jsonrpc": "2.0", "id": 1, "method": "eth_feeHistory", "params": ["0x1", "latest", []]})
+                out[chain] = int(d["result"]["baseFeePerGas"][-1], 16) / 1e9
+                break
+            except Exception:
+                continue
+    return out
+
+
+def sol_priority_fee(rpcs: tuple = SOL_RPCS) -> float | None:
+    """median of the recent prioritization fees, in micro-lamports per compute unit (what solana calls a tip)."""
+    for url in rpcs:
+        try:
+            d = get(url, data={"jsonrpc": "2.0", "id": 1, "method": "getRecentPrioritizationFees", "params": [[]]})
+            fees_ = sorted(int(x["prioritizationFee"]) for x in d["result"])
+            return float(fees_[len(fees_) // 2]) if fees_ else None
+        except Exception:
+            continue
+    return None
+
+
 def fees(rpc: str) -> dict:
     """base fee of the next block + blob base fee, in gwei. eth_feeHistory needs no key."""
     d = get(rpc, data={"jsonrpc": "2.0", "id": 1, "method": "eth_feeHistory", "params": ["0x1", "latest", []]})
@@ -131,6 +162,13 @@ def main() -> int:
         print(f"gas  base {fee['base_gwei']:.3g} gwei{blob}  (block {fee['block']})")
     if out["fear_greed"].get("value"):
         fgv = out["fear_greed"]
+    l2 = l2_fees()
+    sol = sol_priority_fee()
+    if l2 or sol is not None:
+        parts = [f"{k} {v:.4g} gwei" for k, v in l2.items()]
+        if sol is not None:
+            parts.append(f"sol tip {sol:,.0f} ulamports/cu")
+        print("l2   " + " / ".join(parts))
         print(f"f&g  {fgv['value']} {fgv['label']}  (week ago {fgv['week_ago']})")
     if dom:
         print(f"dom  btc {dom:.1f}%")

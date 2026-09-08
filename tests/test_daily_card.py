@@ -20,6 +20,21 @@ def test_pct_handles_none():
     assert dc.pct(1.24) == "+1.2%"
 
 
+def test_l2_fees_and_sol_tip_parse_and_skip_dead_chains(monkeypatch):
+    answers = {"https://a": {"result": {"baseFeePerGas": ["0x1", "0x3b9aca00"]}},
+               "https://s": {"result": [{"slot": 1, "prioritizationFee": 5000}, {"slot": 2, "prioritizationFee": 100}, {"slot": 3, "prioritizationFee": 900}]}}
+
+    def fake_get(url, **kw):
+        if url in answers:
+            return answers[url]
+        raise OSError("down")
+
+    monkeypatch.setattr(dc, "get", fake_get)
+    assert dc.l2_fees({"base": ("https://dead", "https://a"), "arbitrum": ("https://dead",)}) == {"base": 1.0}
+    assert dc.sol_priority_fee(("https://dead", "https://s")) == 900.0
+    assert dc.sol_priority_fee(("https://dead",)) is None
+
+
 def test_tickers_cover_every_coin():
     assert set(dc.TICKER) == set(dc.COINS)
 

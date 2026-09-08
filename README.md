@@ -14,7 +14,7 @@ and the longer notes on [alinaschanz.life](https://alinaschanz.life).
 
 | script | what it does |
 | --- | --- |
-| `daily_card.py` | prices (coingecko), ethereum base fee + blob fee (public rpc), fear & greed (alternative.me), tvl by chain (defillama), btc dominance. one card, one screen. |
+| `daily_card.py` | prices (coingecko), ethereum base fee + blob fee (public rpc), base and arbitrum base fees, the solana priority fee, fear & greed (alternative.me), tvl by chain (defillama), btc dominance. one card, one screen. |
 | `gas_now.py` | what a transfer / swap / mint costs on mainnet right now, in cents. base fee plus the median tip of the last 20 blocks. |
 
 ## run

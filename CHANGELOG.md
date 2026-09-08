@@ -5,6 +5,8 @@ versions follow [semver](https://semver.org/) as far as a command line tool has 
 
 ## [unreleased]
 
+- daily card: base and arbitrum base fees and the solana priority fee on one more line (closes the l2 issue)
+
 ## [0.1.0] - 2026-09-08
 
 first cut: two scripts for the daily post.
