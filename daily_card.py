@@ -19,7 +19,7 @@ import urllib.request
 from datetime import datetime, timezone
 
 UA = {"User-Agent": "onchain-notes/0.1 (+https://alinaschanz.life)"}
-RPCS = ("https://ethereum-rpc.publicnode.com", "https://cloudflare-eth.com", "https://eth.llamarpc.com")
+RPCS = ("https://ethereum-rpc.publicnode.com", "https://eth.drpc.org", "https://rpc.mevblocker.io")
 COINS = ("bitcoin", "ethereum", "solana")
 TICKER = {"bitcoin": "btc", "ethereum": "eth", "solana": "sol"}
 

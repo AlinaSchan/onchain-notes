@@ -53,7 +53,7 @@ nft mint        200,000 gas     3.51 cents
 ## sources
 
 - prices, dominance, charts: [coingecko](https://www.coingecko.com/en/api) public api
-- fees: any ethereum json-rpc, `eth_feeHistory` (defaults to publicnode, cloudflare, llamarpc)
+- fees: any ethereum json-rpc, `eth_feeHistory` (defaults to publicnode, drpc, mevblocker)
 - sentiment: [alternative.me fear & greed](https://alternative.me/crypto/fear-and-greed-index/)
 - tvl: [defillama](https://defillama.com/docs/api)
 
@@ -63,6 +63,15 @@ most of what i post is a screenshot of one of these plus a sentence. keeping the
 scripts public means anyone can check the number instead of trusting the sentence.
 
 not financial advice. numbers, not calls.
+
+## see also
+
+the same idea, grown into proper packages:
+
+- [gasweek](https://github.com/alinaschanz/gasweek): base fee by hour of day over the last week, table and svg
+- [bigmoves](https://github.com/alinaschanz/bigmoves): large stablecoin, weth and wbtc transfers, with exchange labels
+- [stablepeg](https://github.com/alinaschanz/stablepeg): are the stablecoins still a dollar, read from uniswap and curve
+- [ens-lookup](https://github.com/alinaschanz/ens-lookup): ens names to addresses and back, text records included
 
 ## license
 

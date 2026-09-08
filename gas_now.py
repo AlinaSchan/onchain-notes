@@ -13,7 +13,7 @@ import json
 import sys
 import urllib.request
 
-RPCS = ("https://ethereum-rpc.publicnode.com", "https://cloudflare-eth.com", "https://eth.llamarpc.com")
+RPCS = ("https://ethereum-rpc.publicnode.com", "https://eth.drpc.org", "https://rpc.mevblocker.io")
 UA = {"User-Agent": "onchain-notes/0.1 (+https://alinaschanz.life)", "Content-Type": "application/json"}
 # rough gas used by the usual things people do
 ACTIONS = (("eth transfer", 21_000), ("erc20 transfer", 65_000), ("uniswap swap", 150_000), ("nft mint", 200_000))
