@@ -1,6 +1,6 @@
 # onchain-notes
 
-[![ci](https://github.com/alinaschanz/onchain-notes/actions/workflows/ci.yml/badge.svg)](https://github.com/alinaschanz/onchain-notes/actions/workflows/ci.yml)
+[![ci](https://github.com/AlinaSchan/onchain-notes/actions/workflows/ci.yml/badge.svg)](https://github.com/AlinaSchan/onchain-notes/actions/workflows/ci.yml)
 ![python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
 ![license mit](https://img.shields.io/badge/license-MIT-2b7a74)
 
@@ -68,10 +68,10 @@ not financial advice. numbers, not calls.
 
 the same idea, grown into proper packages:
 
-- [gasweek](https://github.com/alinaschanz/gasweek): base fee by hour of day over the last week, table and svg
-- [bigmoves](https://github.com/alinaschanz/bigmoves): large stablecoin, weth and wbtc transfers, with exchange labels
-- [stablepeg](https://github.com/alinaschanz/stablepeg): are the stablecoins still a dollar, read from uniswap and curve
-- [ens-lookup](https://github.com/alinaschanz/ens-lookup): ens names to addresses and back, text records included
+- [gasweek](https://github.com/AlinaSchan/gasweek): base fee by hour of day over the last week, table and svg
+- [bigmoves](https://github.com/AlinaSchan/bigmoves): large stablecoin, weth and wbtc transfers, with exchange labels
+- [stablepeg](https://github.com/AlinaSchan/stablepeg): are the stablecoins still a dollar, read from uniswap and curve
+- [ens-lookup](https://github.com/AlinaSchan/ens-lookup): ens names to addresses and back, text records included
 
 ## license
 
